@@ -18,12 +18,11 @@ The comments should be enough to guide you through this required part: however, 
 
 As soon as you’re done with the configuration, you can test the script from the standard Windows Command Prompt with the following command:
 
-1
+    > powershell -executionpolicy  bypass -File  RunningLow.ps1
 
->  powershell -executionpolicy  bypass -File  RunningLow.ps1
-
-… Or by typing  
-.\RunningLow.ps1  from a PowerShell prompt.
+Or by typing
+    .\RunningLow.ps1  
+from a PowerShell prompt.
 
 As soon as you hit ENTER, you should see something like this:
 
