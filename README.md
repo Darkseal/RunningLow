@@ -21,7 +21,9 @@ As soon as you’re done with the configuration, you can test the script from th
     > powershell -executionpolicy  bypass -File  RunningLow.ps1
 
 Or by typing
+
     .\RunningLow.ps1  
+    
 from a PowerShell prompt.
 
 As soon as you hit ENTER, you should see something like this:
