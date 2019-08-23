@@ -10,6 +10,41 @@ The main purpose of _RunningLow_ is to prevent all that: it will check one or mo
 
 ## Configuration
 
+Here's a list of all RunningLow configuration settings (and their meaning). Each one of them corresponds to a command-line parameter, meaning that you can either set them using the CLI or change their default value within the script itself.
+
+    - minSize
+The minimum free disk space acceptable threshold: any checked drive with less available space will raise a warning.
+
+    - hosts
+If specified, will also check the disk space on the given colon-separated list of hostnames (machine names OR ip addresses) within the LAN. 
+
+Example: $hosts = "HOSTNAME1:HOSTNAME2:129.168.0.115"
+
+**IMPORTANT**: Connecting to remote machines will require launching *RunningLow* with elevated priviledges and having the ***Windows Management Service*** up, running and reachable (TCP port 5985) on the remote machine.
+
+    - volumes
+A colon-separated list of the drive volumes (letters) to check: set it to $null to check all local (non-network) drives.
+
+Example: $volumes = "C:D";
+
+    - email_to
+If specified, will send a low-disk-space warning email to the given colon-separated addresses.
+
+Example: $email_to = "my@email.com:your@email.com";
+
+Default is $null (no e-mail will be sent). Replace it with your@email.com if you don't want to set it from the CLI.
+	
+    - email_username = "username@yourdomain.com"
+    - email_password = "yourpassword"
+    - email_smtp_host = "smtp.yourdomain.com"
+    - email_smtp_port = 25
+    - email_smtp_SSL = 0
+    - email_from = "username@yourdomain.com"
+
+The above parameters can be used to set up your SMTP configuration for sending the e-mail alerts: username, password & so on. It's strongly advisable to set them within the code instead of setting them from the CLI, as you might rarely want to change them. Needless to say, if you don't want RunningLow to send any e-mail, you might as well skip the whole part: just remember to set `-email_to` value to `$null` to have the code skip that as well.
+
+## The Code
+
 The first ten or so lines host the configuration settings, which you should change accordingly to your needs and depending to your specific scenario. The most important thing to understand is the first line: as we can see, we can either specify an array of drives – including network drives, as long as they’re permanently mapped to a local drive letter – or set a  _null_  value: if we go for the latter, the script will check all local drives.
 
 The comments should be enough to guide you through this required part: however, if you need further assistance, you can use the comment section of this post to submit your query and I’ll do my best to help you with that.
@@ -18,13 +53,12 @@ The comments should be enough to guide you through this required part: however, 
 
 As soon as you’re done with the configuration, you can test the script from the standard Windows Command Prompt with the following command:
 
-    > powershell -executionpolicy  bypass -File  RunningLow.ps1
+1
 
-Or by typing
+>  powershell -executionpolicy  bypass -File  RunningLow.ps1
 
-    .\RunningLow.ps1  
-    
-from a PowerShell prompt.
+… Or by typing  
+.\RunningLow.ps1  from a PowerShell prompt.
 
 As soon as you hit ENTER, you should see something like this:
 
