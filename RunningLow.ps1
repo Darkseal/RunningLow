@@ -102,7 +102,7 @@ foreach ($cur_host in $hosts.split($sep)) {
 				+ " bytes free (" + $disk.Free + " bytes - " + ($disk.Free/1MB).ToString(".00") + " GB)") -noNewLine
          
 			if ($email_to) {
-				Write-Host(": sending e-mail..."); -noNewLine
+				Write-Host(": sending e-mail...") -noNewLine
 	
 				$message = new-object Net.Mail.MailMessage;
 				$message.From = $email_from;
