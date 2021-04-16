@@ -99,7 +99,7 @@ foreach ($cur_host in $hosts.split($sep)) {
 			Write-Host "KO" -noNewLine -ForegroundColor Red
 			Write-Host "] " -noNewLine
 			Write-Host ("Drive " + $d + " has less than " + $minSize `
-				+ " bytes free (" + $disk.Free + " bytes - " + ($disk.Free/1MB).ToString(".00") + " GB)") -noNewLine
+				+ " bytes free (" + $disk.Free + " bytes - " + ($disk.Free/1MB).ToString(".00") + " MB)") -noNewLine
          
 			if ($email_to) {
 				Write-Host(": sending e-mail...") -noNewLine
