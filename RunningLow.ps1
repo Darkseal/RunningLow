@@ -115,11 +115,11 @@ foreach ($cur_host in $hosts.split($sep)) {
 				$message.Body =		"Hello there, `r`n`r`n";
 				$message.Body += 	"this is an automatic e-mail message ";
 				$message.Body += 	"sent by RunningLow Powershell script ";
-				$message.Body += 	("to inform you that " + $env:computername + " drive " + $d + " ");
+				$message.Body += 	("to inform you that " + $cur_host + " drive " + $d + " ");
 				$message.Body += 	"is running low on free space. `r`n`r`n";
 				$message.Body += 	"--------------------------------------------------------------";
 				$message.Body +=	"`r`n";
-				$message.Body += 	("Machine HostName: " + $env:computername + " `r`n");
+				$message.Body += 	("Machine HostName: " + $cur_host + " `r`n");
 				$message.Body += 	"Machine IP Address(es): ";
 				$ipAddresses = Get-NetIPAddress -AddressFamily IPv4;
 				foreach ($ip in $ipAddresses) {
